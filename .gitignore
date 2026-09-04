@@ -1,0 +1,44 @@
+# =============================================================
+# Blender autosaves / backups — regenerated on every save (542 MB)
+# =============================================================
+*.blend1
+*.blend2
+*.blend@
+
+# =============================================================
+# Raw render output — 1,440 intermediate PNG frames (3.5 GB).
+# Fully regenerable from the .blend via the documented render run.
+# The encoded video and selected stills live in renders/ instead.
+# =============================================================
+/render_v17/
+
+# =============================================================
+# Download archives from 3D AI Studio — each one duplicates the
+# .fbx and textures already extracted alongside it (401 MB)
+# =============================================================
+*.zip
+
+# =============================================================
+# Superseded shell checkpoints.
+# The published history is the final v7 shell plus its checkpoint;
+# these are large intermediates (~477 MB) kept only locally.
+# =============================================================
+Checkpoint 2 (camera entering correctly).blend
+Checkpoint 3(Camera movement done).blend
+Checkpoint 4 (Scope shaft setup done).blend
+Stomach_Shell_v2_W0_Hypopharynx_done.blend
+Stomach_Shell_v5_W5_Antrum_done.blend
+Stomach_Shell_v6_W6_Pylorus_done.blend
+
+# Colon source — belongs to the vr-colon repository
+Colon.blend
+
+# =============================================================
+# Local / transient
+# =============================================================
+blender.crash.txt
+desktop.ini
+~$*
+
+# Colon export — belongs to the vr-colon repository
+motacolon.fbx

@@ -1,0 +1,12 @@
+# =============================================================
+# Git LFS — large binary asset formats
+# =============================================================
+*.blend  filter=lfs diff=lfs merge=lfs -text
+*.fbx    filter=lfs diff=lfs merge=lfs -text
+*.FBX    filter=lfs diff=lfs merge=lfs -text
+*.obj    filter=lfs diff=lfs merge=lfs -text
+*.mp4    filter=lfs diff=lfs merge=lfs -text
+
+# Textures stay in plain Git — all are under 1.5 MB
+*.jpg    binary
+*.png    binary

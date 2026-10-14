@@ -29,5 +29,31 @@
     "sharpen": {"sigma_px": 1.2, "amount": 0.9},
     "s_curve": {"amount": 0.3},
     "mask": {"enabled": true, "margin_x": 0.06, "margin_y": 0.08, "corner_radius": 0.18, "feather_px": 2.0}
+  },
+  "C_round": {
+    "name": "C_round",
+    "base": "C",
+    "distortion": {"k1": 0.45, "k2": 0.15},
+    "vignette": {"strength": 0.75, "power": 2.5},
+    "bloom": {"threshold_linear": 0.5, "sigmas": [0.006, 0.02], "weights": [0.6, 0.4], "intensity": 0.3},
+    "noise": {"shot_gain": 0.003, "read_std": 0.006, "luma_weight": 1.0, "chroma_weight": 0.4},
+    "sharpen": {"sigma_px": 1.2, "amount": 0.9},
+    "s_curve": {"amount": 0.3},
+    "mask": {"enabled": true, "type": "circle", "diameter_frac_of_height": 1.0, "feather_px": 2.0, "outside_rgb": [0, 0, 0]},
+    "zoom": {"mode": "min_to_keep_circle_inside_source", "border_px": 1.0},
+    "exposure_match": {"enabled": true, "target": "input_mean_luminance_inside_circle", "tolerance": 0.03, "gain_search": [0.25, 64.0], "iterations": 40, "ceiling": "input_max_luminance_inside_circle"}
+  },
+  "C_round_small": {
+    "name": "C_round_small",
+    "base": "C",
+    "distortion": {"k1": 0.45, "k2": 0.15},
+    "vignette": {"strength": 0.75, "power": 2.5},
+    "bloom": {"threshold_linear": 0.5, "sigmas": [0.006, 0.02], "weights": [0.6, 0.4], "intensity": 0.3},
+    "noise": {"shot_gain": 0.003, "read_std": 0.006, "luma_weight": 1.0, "chroma_weight": 0.4},
+    "sharpen": {"sigma_px": 1.2, "amount": 0.9},
+    "s_curve": {"amount": 0.3},
+    "mask": {"enabled": true, "type": "circle", "diameter_frac_of_height": 0.92, "feather_px": 2.0, "outside_rgb": [0, 0, 0]},
+    "zoom": {"mode": "min_to_keep_circle_inside_source", "border_px": 1.0},
+    "exposure_match": {"enabled": true, "target": "input_mean_luminance_inside_circle", "tolerance": 0.03, "gain_search": [0.25, 64.0], "iterations": 40, "ceiling": "input_max_luminance_inside_circle"}
   }
 }

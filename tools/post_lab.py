@@ -4,7 +4,8 @@ Usage:
     blender -b --factory-startup --python tools/post_lab.py -- <input> <outdir>
 
 Writes <outdir>/<input stem>/{original,A_subtle,B_balanced,C_strong_mask}.png and
-sheet.png (original | A | B | C at the same scale). Prints numbers only.
+sheet.png (original | A | B | C at the same scale), plus C_round, C_round_small and
+sheet_round.png (original | C | C_round | C_round_small) when those presets exist. Prints numbers only.
 Presets live in tools/post_lab_presets.json. Standalone: it does not touch any
 scene or .blend; Blender is used only for image I/O, numpy for the maths.
 
@@ -98,9 +99,12 @@ def coords(h, w):
     return dx, dy, np.sqrt(dx * dx + dy * dy), (w / 2) / R, (h / 2) / R, R
 
 
-def barrel(img, k1, k2):
+def barrel(img, k1, k2, zoom=None):
     h, w, _ = img.shape
     dx, dy, r, hw, hh, R = coords(h, w)
+    if zoom is not None:
+        g = 1 + k1 * r ** 2 + k2 * r ** 4
+        return bilinear(img, dx * zoom * g * R + w / 2 - 0.5, dy * zoom * g * R + h / 2 - 0.5)
     if k1 == 0 and k2 == 0:
         return img
     # border samples decide the zoom so that every output pixel samples inside the source
@@ -206,6 +210,67 @@ def rounded_mask(h, w, mx, my, radius, feather):
     return np.clip(0.5 - d / max(feather, 1e-3), 0, 1).astype(np.float32)[..., None]
 
 
+def circle_zoom(h, w, k1, k2, diameter, feather, border):
+    """Largest zoom (<=1) at which every sample for pixels inside the circle (plus feather) stays in the source."""
+    R = 0.5 * np.hypot(w, h)
+    rad = diameter / 2 + feather / 2
+    a = np.linspace(0, 2 * np.pi, 8192, dtype=np.float64)
+    bx, by = rad * np.cos(a), rad * np.sin(a)
+    br = np.hypot(bx, by) / R
+    g = 1 + k1 * br ** 2 + k2 * br ** 4
+    sx = np.abs(bx) * g / (w / 2 - border)
+    sy = np.abs(by) * g / (h / 2 - border)
+    return float(min(1.0, 1.0 / max(sx.max(), sy.max())))
+
+
+def circle_masks(h, w, diameter, feather):
+    ys, xs = np.mgrid[0:h, 0:w].astype(np.float32)
+    d = np.hypot(xs + 0.5 - w / 2, ys + 0.5 - h / 2) - diameter / 2
+    soft = np.clip(0.5 - d / max(feather, 1e-3), 0, 1).astype(np.float32)[..., None]
+    return soft, d <= 0
+
+
+def run_round(enc_in, name, p):
+    h, w, _ = enc_in.shape
+    m, ex = p["mask"], p["exposure_match"]
+    diameter = m["diameter_frac_of_height"] * h
+    soft, inside = circle_masks(h, w, diameter, m["feather_px"])
+    zoom = circle_zoom(h, w, p["distortion"]["k1"], p["distortion"]["k2"], diameter, m["feather_px"], p["zoom"]["border_px"])
+    y_in = lum(enc_in)
+    mean_in, share_in = float(y_in[inside].mean()), float((y_in[inside] >= 0.98).mean())
+    in_max = float(y_in[inside].max())
+    lin = barrel(srgb_to_linear(enc_in), p["distortion"]["k1"], p["distortion"]["k2"], zoom)
+    lin = vignette(lin, p["vignette"]["strength"], p["vignette"]["power"])
+    b = p["bloom"]
+    lin = bloom(lin, b["threshold_linear"], b["sigmas"], b["weights"], b["intensity"])
+    n = p["noise"]
+    lin = noise(lin, name, n["shot_gain"], n["read_std"], n["luma_weight"], n["chroma_weight"])
+    lin = sharpen(lin, p["sharpen"]["sigma_px"], p["sharpen"]["amount"])
+    enc = s_curve(np.clip(np.clip(linear_to_srgb(lin), 0, None), 0, 1), p["s_curve"]["amount"])
+    ceil = min(in_max if share_in > 0 else min(in_max, 0.975), 1.0)
+
+    def build(gain, c):
+        return quantize(np.clip(ceiling(enc * gain, c), 0, 1) * soft)
+
+    lo, hi = ex["gain_search"]
+    for _ in range(ex["iterations"]):  # bisection on a monotone mean
+        mid = np.sqrt(lo * hi)
+        if lum(build(mid, ceil))[inside].mean() < mean_in:
+            lo = mid
+        else:
+            hi = mid
+    gain = float(np.sqrt(lo * hi))
+    out = build(gain, ceil)
+    while (float((lum(out)[inside] >= 0.98).mean()) > share_in + 1e-12 or float(lum(out).max()) > in_max) and ceil > 0.3:
+        ceil -= 0.001
+        out = build(gain, ceil)
+    y_out = lum(out)
+    return out, dict(zoom=zoom, gain=gain, ceil=ceil, mean_in=mean_in, share_in=share_in,
+                     mean_out=float(y_out[inside].mean()), share_out=float((y_out[inside] >= 0.98).mean()),
+                     max_in=in_max, max_out=float(y_out.max()),
+                     outside_max=float(out[~inside & (soft[..., 0] == 0)].max()) if (~inside & (soft[..., 0] == 0)).any() else 0.0)
+
+
 # ---------------------------------------------------------------- pipeline
 def run_preset(enc_in, name, p, share_in, in_max):
     lin = srgb_to_linear(enc_in)
@@ -283,6 +348,23 @@ def main():
             key, p["name"], t1 - t0, t2 - t1, mean_o, share_o, ceil))
         tiles.append(out)
     save_image(os.path.join(outdir, "sheet.png"), np.concatenate(tiles, axis=1))
+    round_tiles = [enc_in, tiles[3]]
+    for key in ("C_round", "C_round_small"):
+        if key not in presets:
+            continue
+        p = presets[key]
+        t0 = time.perf_counter()
+        out, info = run_round(enc_in, os.path.basename(src), p)
+        t1 = time.perf_counter()
+        save_image(os.path.join(outdir, key + ".png"), out)
+        t2 = time.perf_counter()
+        print("preset {} process_s={:.2f} save_s={:.2f} zoom={:.4f} gain={:.3f} ceiling={:.3f} circle_mean_in={:.4f} circle_mean_out={:.4f} "
+              "circle_share_ge_0.98_in={:.6f} out={:.6f} circle_max_in={:.4f} out={:.4f} outside_max_value={:.4f}".format(
+                  key, t1 - t0, t2 - t1, info["zoom"], info["gain"], info["ceil"], info["mean_in"], info["mean_out"],
+                  info["share_in"], info["share_out"], info["max_in"], info["max_out"], info["outside_max"]))
+        round_tiles.append(out)
+    if len(round_tiles) > 2:
+        save_image(os.path.join(outdir, "sheet_round.png"), np.concatenate(round_tiles, axis=1))
     peak, cur = peak_working_set_mib()
     print("process peak_working_set_MiB={:.0f} working_set_MiB={:.0f}".format(peak, cur))
 

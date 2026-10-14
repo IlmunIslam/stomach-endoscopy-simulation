@@ -3,7 +3,7 @@
 Date: 2026-10-15. Researcher session, no Blender, nothing downloaded. Ilmun may sell the simulation commercially.
 
 ## TL;DR
-- Best fit by content and quality: **GastroHUN** (1080x1350, Olympus EXERA III, 22 stomach landmarks incl. incisura/antrum/body/fundus, 10 s clips). Figshare says **CC BY**, but its GitHub README badge says CC BY-NC 4.0, so it is not cleared for commercial use yet.
+- Best fit by content and quality: **GastroHUN** (1350x1080 (width x height, per the image metadata), Olympus EXERA III, 22 stomach landmarks incl. incisura/antrum/body/fundus, 10 s clips). Figshare says **CC BY**, but its GitHub README badge says CC BY-NC 4.0, so it is not cleared for commercial use yet.
 - **HyperKvasir** has z-line (932), pylorus (999), retroflex-stomach (764) images and 373 videos. Paper, repo, OSF and the zip's `license.txt` say CC BY 4.0, but the GitHub README says commercial use needs prior written permission: conflict.
 - **GastroVision** has 969 normal-stomach, 393 pylorus, 330 normal z-line, 140 normal esophagus images (94+33+37+13 of them at 1920x1072); no licence file; OSF licence record says CC BY 4.0.
 - Wikimedia Commons has only two usable stills (CC BY-SA 3.0). NIH Open-i was not checked.
@@ -30,12 +30,12 @@ Date: 2026-10-15. Researcher session, no Blender, nothing downloaded. Ilmun may 
 - Size/classes: **conflict**. OSF, arXiv, GitHub README and the [metadata CSV](https://raw.githubusercontent.com/DebeshJha/GastroVision/main/GastroVision_metadata.csv) (8,000 rows): 8,000 images, 27 classes. The [Simula page](https://datasets.simula.no/gastrovision/) says 6,169 images, 36 classes (updated June 2026). I could not tell which version the OSF download serves. Confidence high for the CSV.
 - Normal upper-GI classes in the CSV (images; resolutions): Normal stomach 969 (768x576: 575; 1280x1024: 265; 1920x1072: 94; 720x576: 35); Pylorus 393 (1920x1072: 33); Gastroesophageal_junction_normal z-line 330 (1920x1072: 37); Normal esophagus 140 (1920x1072: 13); Duodenal bulb 205. Average file 216-323 kB. Confidence high.
 - No video, no retroflex-stomach class (only "Retroflex rectum"), no fluid or bubble class.
-- Download size: **could not check** (OSF listing shows folders without sizes; Google Drive mirror not opened). Subset download: not tested.
+- Download size: one file, `Gastrovision.zip`, 1,793,518,442 bytes with 8,003 entries (OSF WaterButler listing). Subset: yes, range requests work (checked 2026-10-15 and used).
 - **Licence:** the OSF project licence record is "CC-By Attribution 4.0 International", copyright holder empty, year 2023 ([OSF API](https://api.osf.io/v2/nodes/84e7f/)). The arXiv page shows CC BY 4.0 for the article only ([arXiv](https://arxiv.org/abs/2307.08140)). GitHub repo has no licence file (API `license: null`); the Simula page states none. Confidence medium. Attribution: Jha et al., GastroVision, ICML ML4MHD 2023.
 
 ### 3. GastroHUN (Hospital Universitario Nacional de Colombia)
 - Content: 8,834 labeled images (387 patients), 4,729 labeled 10 s sequences (223 procedures), 237 full videoendoscopies; 22 stomach landmarks (A/L/P/G views of antrum, lower body, middle-upper body, fundus/cardia, incisura) plus one "NA" class ([paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC11742658/), [GitHub README](https://github.com/Cimalab-unal/GastroHUN)). Confidence high. There is no esophagus/Z-line and no pylorus class among the landmarks listed.
-- Resolution: images 1080x1350 (91%) or 720x900; sequences the same; Olympus EVIS EXERA III CV-190; 15 or 30 fps (paper). The most modern footage found. Confidence high.
+- Resolution: images 1350x1080 (91%) or 900x720 (the paper writes 1080x1350; the metadata JSON lists width 1350, height 1080); sequences the same; Olympus EVIS EXERA III CV-190; 15 or 30 fps (paper). The most modern footage found. Confidence high.
 - Download sizes ([figshare file list](https://springernature.figshare.com/articles/dataset/GastroHUN_an_Endoscopy_Dataset_of_Complete_Systematic_Screening_Protocol_for_the_Stomach/27308133), via [API](https://api.figshare.com/v2/articles/27308133)): Labeled Images.zip 2.63 GiB (9,221 entries); Labeled_Sequences Group1-7 1.28-4.86 GiB each; Videoendoscopies Group1-7 5.9-9.7 GiB each; metadata.zip 2 MB; about 96.9 GB total. Images sit in patient-ID folders, so class labels need `metadata.zip` (not read). Sequences are mp4, 8.7-10.4 MB each in the group I listed.
 - Subset: **yes**. The figshare file URL redirects to storage that answers range requests with 206 and `Accept-Ranges: bytes` (central directory read 1.1 MB).
 - **Licence (conflict):** figshare record CC BY (`license.name = CC BY`, creativecommons.org/licenses/by/4.0). Paper article CC BY 4.0. GitHub README: badge "CC BY-NC 4.0" and text "released fully open for research and educational purposes" with competitions needing permission. Patient consent covers "research and education" (paper). Commercial reuse is therefore unclear. Confidence medium.
@@ -74,3 +74,8 @@ Date: 2026-10-15. Researcher session, no Blender, nothing downloaded. Ilmun may 
 2. Yes to downloading the ~100 MB board into `references/` (git-ignored)?
 3. May I view the candidate images to curate the board, or will you pick?
 4. Which folder holds your own photos (section 7)?
+
+## Update 2026-10-15 (after Ilmun's yes)
+- Downloaded 35 files (101.5 MB, largest 35.4 MB) into git-ignored `references/`; see `references/MANIFEST.md`. HyperKvasir clips are VC-1, 1280x1024, about 25 fps, 19 s and 23 s; GastroHUN clips are h264, 1350x1080, 15 fps, 10 s.
+- Seen on contact sheets: some HyperKvasir images show patient-field text overlays (NAME/ID/date) and were skipped; all GastroVision 1920x1072 images carry a left-side recording overlay with blank name and date/time fields.
+- Permission email drafts (unsent): `docs/security/permission-email-drafts.md`.

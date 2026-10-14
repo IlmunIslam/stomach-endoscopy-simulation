@@ -1,0 +1,33 @@
+{
+  "_notes": "Parameters only. Radii are normalised to the half-diagonal of the image (r=1 at the corners). Sigmas are fractions of image height. Noise std = sqrt(shot_gain * L + read_std^2) in linear light; colour noise weight is relative to luminance noise (luminance weight is 1.0).",
+  "A": {
+    "name": "subtle",
+    "distortion": {"k1": 0.06, "k2": 0.0},
+    "vignette": {"strength": 0.25, "power": 2.5},
+    "bloom": {"threshold_linear": 0.6, "sigmas": [0.006, 0.02], "weights": [0.6, 0.4], "intensity": 0.08},
+    "noise": {"shot_gain": 0.0006, "read_std": 0.002, "luma_weight": 1.0, "chroma_weight": 0.25},
+    "sharpen": {"sigma_px": 1.2, "amount": 0.3},
+    "s_curve": {"amount": 0.08},
+    "mask": {"enabled": false}
+  },
+  "B": {
+    "name": "balanced",
+    "distortion": {"k1": 0.3, "k2": 0.1},
+    "vignette": {"strength": 0.5, "power": 2.5},
+    "bloom": {"threshold_linear": 0.55, "sigmas": [0.006, 0.02], "weights": [0.6, 0.4], "intensity": 0.18},
+    "noise": {"shot_gain": 0.0015, "read_std": 0.004, "luma_weight": 1.0, "chroma_weight": 0.3},
+    "sharpen": {"sigma_px": 1.2, "amount": 0.6},
+    "s_curve": {"amount": 0.2},
+    "mask": {"enabled": false}
+  },
+  "C": {
+    "name": "strong_mask",
+    "distortion": {"k1": 0.45, "k2": 0.15},
+    "vignette": {"strength": 0.75, "power": 2.5},
+    "bloom": {"threshold_linear": 0.5, "sigmas": [0.006, 0.02], "weights": [0.6, 0.4], "intensity": 0.3},
+    "noise": {"shot_gain": 0.003, "read_std": 0.006, "luma_weight": 1.0, "chroma_weight": 0.4},
+    "sharpen": {"sigma_px": 1.2, "amount": 0.9},
+    "s_curve": {"amount": 0.3},
+    "mask": {"enabled": true, "margin_x": 0.06, "margin_y": 0.08, "corner_radius": 0.18, "feather_px": 2.0}
+  }
+}

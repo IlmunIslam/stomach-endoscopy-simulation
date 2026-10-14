@@ -45,3 +45,6 @@ motacolon.fbx
 
 # Audit scratch output (renders/ itself holds committed video and stills)
 /renders/audit/
+
+# post lab output
+/renders/postlab/

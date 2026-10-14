@@ -42,3 +42,6 @@ desktop.ini
 
 # Colon export — belongs to the vr-colon repository
 motacolon.fbx
+
+# Audit scratch output (renders/ itself holds committed video and stills)
+/renders/audit/

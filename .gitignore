@@ -48,3 +48,8 @@ motacolon.fbx
 
 # post lab output
 /renders/postlab/
+
+# speed milestone S1 (blend copies and test renders)
+/blend/
+/renders/speed/
+/references/

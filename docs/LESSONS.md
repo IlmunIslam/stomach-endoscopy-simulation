@@ -1,1 +1,2 @@
 - 2026-10-15 smooth-selected-spikes: harmonic membrane on the user's edit-mode selection + 1 ring (boundary pinned) removed most Stomach spikes; guessing spike verts automatically failed (rugae vs fins indistinguishable) — check the live vertex selection (bmesh select flags in edit mode) FIRST.
+- 2026-10-15 smooth-selected round 2: grow=0 (selection only, boundary pinned) was enough for the bottom-centre ridges; use grow=1 only if off-wall boundary verts remain.

@@ -19,3 +19,5 @@
    Evidence: it was skipped on the vein/slot and seam tasks.
 10. Write lessons to docs/LESSONS.md during the work, because context gets compacted.
     Evidence: the earlier session ran out of context mid-task.
+11. Before any reassign, merge or delete, save a mesh.copy() and each face's material_index; .npy position backups cannot restore topology or slot assignments.
+    Evidence: docs/LESSONS.md 2026-10-17 antrum seam/crack entries (merge removed 346 verts; 157-face reassign left red patches).

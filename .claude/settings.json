@@ -20,6 +20,17 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": ".*execute_blender_code.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/block_blender_file_ops.py\""
+          }
+        ]
+      }
     ]
   }
 }

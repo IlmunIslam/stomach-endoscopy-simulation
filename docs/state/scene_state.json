@@ -1,0 +1,2427 @@
+{
+  "animation": {
+    "actions": [
+      {
+        "frame_range": [
+          1.0,
+          1560.0
+        ],
+        "name": "BACKUP_Endoscope_Flythrough_before_pylorus",
+        "paths": [
+          "location",
+          "rotation_quaternion"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1440.0
+        ],
+        "name": "BACKUP_Endoscope_Flythrough_v17_before_GEJ_hold",
+        "paths": [
+          "location",
+          "rotation_quaternion"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1560.0
+        ],
+        "name": "BACKUP_Endoscope_TipExposure_before_pylorus",
+        "paths": [
+          "energy"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1440.0
+        ],
+        "name": "BACKUP_Endoscope_TipExposure_v15_before_GEJ_hold",
+        "paths": [
+          "energy"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1434.0
+        ],
+        "name": "BACKUP_GEJ_ZLine_Motion_before_hold",
+        "paths": [
+          "key_blocks[\"Breath\"].value",
+          "key_blocks[\"Open\"].value",
+          "key_blocks[\"Pulse\"].value",
+          "key_blocks[\"Squeeze\"].value"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1551.0
+        ],
+        "name": "BACKUP_GEJ_ZLine_Motion_before_pylorus",
+        "paths": [
+          "key_blocks[\"Breath\"].value",
+          "key_blocks[\"Open\"].value",
+          "key_blocks[\"Pulse\"].value",
+          "key_blocks[\"Squeeze\"].value"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1560.0
+        ],
+        "name": "BACKUP_PART_W3_FundusAction_before_pylorus",
+        "paths": [
+          "modifiers[\"GN_Cardia_Rugae\"][\"Socket_1\"]",
+          "modifiers[\"GN_Cardia_Rugae\"][\"Socket_3\"]"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1630.0
+        ],
+        "name": "Endoscope_Flythrough_v17",
+        "paths": [
+          "location",
+          "rotation_quaternion"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1630.0
+        ],
+        "name": "Endoscope_TipExposure_v15",
+        "paths": [
+          "energy"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1621.0
+        ],
+        "name": "GEJ_ZLine_Motion",
+        "paths": [
+          "key_blocks[\"Breath\"].value",
+          "key_blocks[\"Open\"].value",
+          "key_blocks[\"Pulse\"].value",
+          "key_blocks[\"Squeeze\"].value"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1430.0
+        ],
+        "name": "PART_Scope_ShaftAction",
+        "paths": [
+          "hide_render",
+          "hide_viewport"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1630.0
+        ],
+        "name": "PART_W3_FundusAction",
+        "paths": [
+          "modifiers[\"GN_Cardia_Rugae\"][\"Socket_1\"]",
+          "modifiers[\"GN_Cardia_Rugae\"][\"Socket_3\"]"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          1.0,
+          1630.0
+        ],
+        "name": "Pylorus_Motion",
+        "paths": [
+          "key_blocks[\"Pylorus_Close\"].value",
+          "key_blocks[\"Pylorus_Open\"].value"
+        ],
+        "users": 3
+      },
+      {
+        "frame_range": [
+          51.0,
+          51.0
+        ],
+        "name": "StomachAction.001",
+        "paths": [
+          "modifiers[\"Decimate\"].iterations"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          51.0,
+          51.0
+        ],
+        "name": "StomachAction.002",
+        "paths": [
+          "modifiers[\"Decimate\"].iterations"
+        ],
+        "users": 1
+      },
+      {
+        "frame_range": [
+          51.0,
+          51.0
+        ],
+        "name": "StomachAction.003",
+        "paths": [
+          "modifiers[\"Decimate\"].iterations"
+        ],
+        "users": 2
+      },
+      {
+        "frame_range": [
+          1.0,
+          1.0
+        ],
+        "name": "Stomach|StomachAction.001",
+        "paths": [
+          "location",
+          "rotation_euler",
+          "scale"
+        ],
+        "users": 1
+      }
+    ],
+    "animated_objects": [
+      {
+        "action": "StomachAction.002",
+        "object": "Breathing tube"
+      },
+      {
+        "action": "Endoscope_Flythrough_v17",
+        "object": "Cam_Endoscope"
+      },
+      {
+        "action": "StomachAction.003",
+        "object": "Esophagus Tube"
+      },
+      {
+        "action": "PART_Scope_ShaftAction",
+        "object": "PART_Scope_Shaft"
+      },
+      {
+        "action": "PART_W3_FundusAction",
+        "object": "PART_W3_Fundus"
+      },
+      {
+        "action": "StomachAction.001",
+        "object": "Stomach"
+      }
+    ],
+    "frame_current": 971,
+    "frame_end": 1630,
+    "frame_start": 1
+  },
+  "blend_file": "Stomach_Shell_v7_Manual edit done.blend",
+  "blender_version": "5.1.2",
+  "cameras": [
+    {
+      "active": true,
+      "clip": [
+        0.001,
+        200.0
+      ],
+      "dof": false,
+      "focus_distance": 10.0,
+      "fov_deg": 90.0,
+      "fstop": 2.8,
+      "lens": 18.0,
+      "name": "Cam_Endoscope",
+      "parent": null,
+      "sensor": [
+        36.0,
+        24.0
+      ],
+      "sensor_fit": "AUTO",
+      "type": "PERSP"
+    },
+    {
+      "active": false,
+      "clip": [
+        0.1,
+        100.0
+      ],
+      "dof": false,
+      "focus_distance": 10.0,
+      "fov_deg": 39.6,
+      "fstop": 2.8,
+      "lens": 50.0,
+      "name": "Camera",
+      "parent": null,
+      "sensor": [
+        36.0,
+        24.0
+      ],
+      "sensor_fit": "AUTO",
+      "type": "PERSP"
+    },
+    {
+      "active": false,
+      "clip": [
+        0.1,
+        100.0
+      ],
+      "dof": false,
+      "focus_distance": 10.0,
+      "fov_deg": 39.6,
+      "fstop": 2.8,
+      "lens": 50.0,
+      "name": "Camera.001",
+      "parent": null,
+      "sensor": [
+        36.0,
+        24.0
+      ],
+      "sensor_fit": "AUTO",
+      "type": "PERSP"
+    }
+  ],
+  "images": [
+    {
+      "colorspace": "sRGB",
+      "exists_on_disk": false,
+      "filepath": "S:\\works\\VR-Colon\\Assets\\Unity projects\\VR-Colon\\Assets\\Imported\\Colon_image.png",
+      "has_data": false,
+      "name": "Colon_image.png",
+      "packed": false,
+      "size": [
+        0,
+        0
+      ],
+      "source": "FILE"
+    },
+    {
+      "colorspace": "",
+      "exists_on_disk": null,
+      "filepath": "",
+      "has_data": false,
+      "name": "Render Result",
+      "packed": false,
+      "size": [
+        0,
+        0
+      ],
+      "source": "VIEWER"
+    },
+    {
+      "colorspace": "sRGB",
+      "exists_on_disk": false,
+      "filepath": "//Textures\\Stomach_BakedNormal.png",
+      "has_data": false,
+      "name": "Stomach_Baked",
+      "packed": false,
+      "size": [
+        0,
+        0
+      ],
+      "source": "FILE"
+    },
+    {
+      "colorspace": "sRGB",
+      "exists_on_disk": false,
+      "filepath": "//Textures\\Stomach_GlossyHDRP.png",
+      "has_data": false,
+      "name": "Stomach_HDRP",
+      "packed": false,
+      "size": [
+        0,
+        0
+      ],
+      "source": "FILE"
+    },
+    {
+      "colorspace": "sRGB",
+      "exists_on_disk": false,
+      "filepath": "S:\\works\\Blender creations\\Stomach all parts\\W1_GEJ_ZLine\\tripo_convert_9635a98a-2776-4ceb-a88a-6464aef9f8f2.fbm\\tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_BaseColor.jpg",
+      "has_data": true,
+      "name": "tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_BaseColor.jpg",
+      "packed": true,
+      "size": [
+        2048,
+        2048
+      ],
+      "source": "FILE"
+    },
+    {
+      "colorspace": "Non-Color",
+      "exists_on_disk": false,
+      "filepath": "S:\\works\\Blender creations\\Stomach all parts\\W1_GEJ_ZLine\\tripo_convert_9635a98a-2776-4ceb-a88a-6464aef9f8f2.fbm\\tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_Metallic.jpg",
+      "has_data": true,
+      "name": "tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_Metallic.jpg",
+      "packed": true,
+      "size": [
+        1024,
+        1024
+      ],
+      "source": "FILE"
+    },
+    {
+      "colorspace": "Non-Color",
+      "exists_on_disk": false,
+      "filepath": "S:\\works\\Blender creations\\Stomach all parts\\W1_GEJ_ZLine\\tripo_convert_9635a98a-2776-4ceb-a88a-6464aef9f8f2.fbm\\tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_Normal_Bake.jpg",
+      "has_data": true,
+      "name": "tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_Normal_Bake.jpg",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ],
+      "source": "FILE"
+    },
+    {
+      "colorspace": "Non-Color",
+      "exists_on_disk": false,
+      "filepath": "S:\\works\\Blender creations\\Stomach all parts\\W1_GEJ_ZLine\\tripo_convert_9635a98a-2776-4ceb-a88a-6464aef9f8f2.fbm\\tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_Roughness.jpg",
+      "has_data": true,
+      "name": "tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_Roughness.jpg",
+      "packed": true,
+      "size": [
+        1024,
+        1024
+      ],
+      "source": "FILE"
+    },
+    {
+      "colorspace": "sRGB",
+      "exists_on_disk": false,
+      "filepath": "S:\\works\\Blender creations\\Stomach all parts\\W0_Hypopharynx\\tripo_convert_c4496501-201b-494f-91a6-4d03e4775674.fbm\\tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_BaseColor.jpg",
+      "has_data": true,
+      "name": "tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_BaseColor.jpg",
+      "packed": true,
+      "size": [
+        2048,
+        2048
+      ],
+      "source": "FILE"
+    },
+    {
+      "colorspace": "Non-Color",
+      "exists_on_disk": false,
+      "filepath": "S:\\works\\Blender creations\\Stomach all parts\\W0_Hypopharynx\\tripo_convert_c4496501-201b-494f-91a6-4d03e4775674.fbm\\tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_Metallic.jpg",
+      "has_data": true,
+      "name": "tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_Metallic.jpg",
+      "packed": true,
+      "size": [
+        1024,
+        1024
+      ],
+      "source": "FILE"
+    },
+    {
+      "colorspace": "Non-Color",
+      "exists_on_disk": false,
+      "filepath": "S:\\works\\Blender creations\\Stomach all parts\\W0_Hypopharynx\\tripo_convert_c4496501-201b-494f-91a6-4d03e4775674.fbm\\tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_Normal_Bake.jpg",
+      "has_data": true,
+      "name": "tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_Normal_Bake.jpg",
+      "packed": true,
+      "size": [
+        512,
+        512
+      ],
+      "source": "FILE"
+    },
+    {
+      "colorspace": "Non-Color",
+      "exists_on_disk": false,
+      "filepath": "S:\\works\\Blender creations\\Stomach all parts\\W0_Hypopharynx\\tripo_convert_c4496501-201b-494f-91a6-4d03e4775674.fbm\\tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_Roughness.jpg",
+      "has_data": true,
+      "name": "tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_Roughness.jpg",
+      "packed": true,
+      "size": [
+        1024,
+        1024
+      ],
+      "source": "FILE"
+    }
+  ],
+  "lights": [
+    {
+      "color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "energy": 1000.0,
+      "hide_render": false,
+      "hide_viewport": true,
+      "location": [
+        -0.5017,
+        0.1529,
+        -0.0891
+      ],
+      "name": "Light",
+      "parent": null,
+      "radius": 1.3924,
+      "type": "POINT"
+    },
+    {
+      "color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "energy": 1000.0,
+      "hide_render": false,
+      "hide_viewport": true,
+      "location": [
+        4.0762,
+        1.0055,
+        5.9039
+      ],
+      "name": "Light.001",
+      "parent": null,
+      "radius": 0.0,
+      "type": "POINT"
+    },
+    {
+      "color": [
+        1.0,
+        0.94,
+        0.86
+      ],
+      "energy": 26.1105,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        0.0,
+        0.0,
+        -0.15
+      ],
+      "name": "Light_Endoscope_Tip",
+      "parent": "Cam_Endoscope",
+      "radius": 0.02,
+      "type": "POINT"
+    },
+    {
+      "color": [
+        1.0,
+        0.97,
+        0.95
+      ],
+      "energy": 12.0,
+      "hide_render": false,
+      "hide_viewport": true,
+      "location": [
+        29.3828,
+        -1.7732,
+        51.1093
+      ],
+      "name": "Light_Fill_1",
+      "parent": null,
+      "radius": 0.0,
+      "type": "AREA"
+    },
+    {
+      "color": [
+        1.0,
+        0.97,
+        0.95
+      ],
+      "energy": 12.0,
+      "hide_render": false,
+      "hide_viewport": true,
+      "location": [
+        -2.4746,
+        -1.7732,
+        39.1093
+      ],
+      "name": "Light_Fill_2",
+      "parent": null,
+      "radius": 0.0,
+      "type": "AREA"
+    }
+  ],
+  "materials": [
+    {
+      "name": "BACKUP_MAT_W3_Fundus_before_white",
+      "node_counts": {
+        "Attribute": 1,
+        "BsdfPrincipled": 1,
+        "Bump": 1,
+        "MapRange": 4,
+        "Mapping": 6,
+        "Math": 11,
+        "Mix": 10,
+        "NewGeometry": 1,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 3,
+        "TexVoronoi": 3,
+        "ValToRGB": 6,
+        "VectorMath": 2
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": true,
+          "value": 0.07
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.35
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.4
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.9
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.18
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 1
+    },
+    {
+      "name": "Dots Stroke",
+      "node_counts": {
+        "BsdfDiffuse": 1,
+        "BsdfPrincipled": 1,
+        "NodeFrame": 1,
+        "OutputMaterial": 2
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.03
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.5
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 2
+    },
+    {
+      "name": "MAT_Antrum_Mucosa",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "Bump": 2,
+        "Mapping": 2,
+        "MixRGB": 2,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 4,
+        "ValToRGB": 4
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.04
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.38
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.28
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 7
+    },
+    {
+      "name": "MAT_DuodenalBulb_Mucosa",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "Bump": 2,
+        "Mapping": 4,
+        "MixRGB": 3,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 3,
+        "TexVoronoi": 2,
+        "ValToRGB": 5
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.05
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.55
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.3
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.05
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 1
+    },
+    {
+      "name": "MAT_Esophagus_Tube",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "Bump": 1,
+        "MapRange": 1,
+        "Mapping": 2,
+        "Math": 3,
+        "Mix": 4,
+        "NewGeometry": 1,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 4,
+        "ValToRGB": 3,
+        "VectorMath": 2
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": true,
+          "value": 0.03
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.4
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.08
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.9
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.18
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 1
+    },
+    {
+      "name": "MAT_GEJ_WhiteMucosa",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "Mapping": 1,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 1,
+        "ValToRGB": 1
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.04
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.6
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.5
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": false,
+          "value": 0.18
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.1
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 1
+    },
+    {
+      "name": "MAT_Pylorus_Mucosa",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "Bump": 2,
+        "Mapping": 2,
+        "MixRGB": 2,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 4,
+        "ValToRGB": 4
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.04
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.8
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.28
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 4
+    },
+    {
+      "name": "MAT_Scope_Tube",
+      "node_counts": {
+        "Attribute": 1,
+        "BsdfPrincipled": 1,
+        "Bump": 1,
+        "MapRange": 5,
+        "Math": 14,
+        "Mix": 2,
+        "OutputMaterial": 1,
+        "TexNoise": 2
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.09
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.35
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.5
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.62
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 2
+    },
+    {
+      "name": "MAT_W1_GEJ_ZLine",
+      "node_counts": {
+        "Attribute": 4,
+        "BsdfPrincipled": 1,
+        "CombineColor": 2,
+        "CombineXYZ": 3,
+        "LayerWeight": 1,
+        "MapRange": 21,
+        "Mapping": 5,
+        "Math": 34,
+        "Mix": 13,
+        "OutputMaterial": 1,
+        "TexCoord": 2,
+        "TexNoise": 9,
+        "TexVoronoi": 2,
+        "ValToRGB": 6,
+        "VectorMath": 3
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": true,
+          "value": 0.03
+        },
+        "Coat Weight": {
+          "linked": true,
+          "value": 1.0
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.4
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": true,
+          "value": 0.9
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.18
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 2
+    },
+    {
+      "name": "MAT_W3_Fundus_Mucosa",
+      "node_counts": {
+        "Attribute": 2,
+        "BsdfPrincipled": 1,
+        "Bump": 1,
+        "MapRange": 4,
+        "Mapping": 6,
+        "Math": 14,
+        "Mix": 11,
+        "NewGeometry": 1,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 3,
+        "TexVoronoi": 3,
+        "ValToRGB": 6,
+        "VectorMath": 2
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": true,
+          "value": 0.07
+        },
+        "Coat Weight": {
+          "linked": true,
+          "value": 0.35
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.4
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.9
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.18
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 6
+    },
+    {
+      "name": "MAT_W5_Antrum_Mucosa",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "Bump": 1,
+        "MapRange": 2,
+        "Mix": 1,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 2,
+        "ValToRGB": 1,
+        "VectorMath": 2
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.3
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.22
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.38
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.12
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 1
+    },
+    {
+      "name": "MAT_W6_Pylorus_Ring",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "Bump": 1,
+        "MapRange": 2,
+        "Mix": 1,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 2,
+        "ValToRGB": 1,
+        "VectorMath": 2
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.3
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.22
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.38
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.12
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 2
+    },
+    {
+      "name": "Stomach_Exterior",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "Bump": 2,
+        "Mapping": 2,
+        "MixRGB": 2,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 4,
+        "ValToRGB": 4
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.03
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.7
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.4
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.18
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 1
+    },
+    {
+      "name": "Stomach_Exterior.001",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "OutputMaterial": 1
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.03
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.5
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 1
+    },
+    {
+      "name": "Stomach_Exterior_Cardia",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "Bump": 2,
+        "Mapping": 2,
+        "MixRGB": 2,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexNoise": 4,
+        "ValToRGB": 4
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.03
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.7
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.4
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.18
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [],
+      "use_nodes": true,
+      "users": 1
+    },
+    {
+      "name": "material_0",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "OutputMaterial": 1,
+        "TexImage": 1
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.03
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 1.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.5
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": false,
+          "value": 0.4409
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [
+        "Colon_image.png"
+      ],
+      "use_nodes": true,
+      "users": 1
+    },
+    {
+      "name": "tripo_mat_9635a98a.001",
+      "node_counts": {
+        "Attribute": 1,
+        "BsdfPrincipled": 2,
+        "HueSaturation": 1,
+        "Mapping": 1,
+        "Mix": 1,
+        "MixShader": 1,
+        "NormalMap": 1,
+        "OutputMaterial": 1,
+        "TexCoord": 1,
+        "TexImage": 4,
+        "TexNoise": 1,
+        "ValToRGB": 1
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.03
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.5
+        },
+        "Metallic": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [
+        "tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_BaseColor.jpg",
+        "tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_Metallic.jpg",
+        "tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_Normal_Bake.jpg",
+        "tripo_node_77a746c0-add2-47f2-9b32-a4c8a738d288_Roughness.jpg"
+      ],
+      "use_nodes": true,
+      "users": 1
+    },
+    {
+      "name": "tripo_mat_c4496501",
+      "node_counts": {
+        "BsdfPrincipled": 1,
+        "NormalMap": 1,
+        "OutputMaterial": 1,
+        "TexImage": 4
+      },
+      "principled": {
+        "Alpha": {
+          "linked": false,
+          "value": 1.0
+        },
+        "Coat Roughness": {
+          "linked": false,
+          "value": 0.03
+        },
+        "Coat Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Emission Strength": {
+          "linked": false,
+          "value": 0.0
+        },
+        "IOR": {
+          "linked": false,
+          "value": 1.5
+        },
+        "Metallic": {
+          "linked": true,
+          "value": 0.0
+        },
+        "Roughness": {
+          "linked": true,
+          "value": 0.5
+        },
+        "Specular IOR Level": {
+          "linked": false,
+          "value": 0.5
+        },
+        "Subsurface Weight": {
+          "linked": false,
+          "value": 0.0
+        },
+        "Transmission Weight": {
+          "linked": false,
+          "value": 0.0
+        }
+      },
+      "textures": [
+        "tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_BaseColor.jpg",
+        "tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_Metallic.jpg",
+        "tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_Normal_Bake.jpg",
+        "tripo_node_ad6a7d8f-1903-4006-8040-24dc9b5676ba_Roughness.jpg"
+      ],
+      "use_nodes": true,
+      "users": 1
+    }
+  ],
+  "object_counts": {
+    "CAMERA": 3,
+    "CURVE": 4,
+    "EMPTY": 2,
+    "LIGHT": 5,
+    "MESH": 13
+  },
+  "objects": [
+    {
+      "data": "Sphere.001",
+      "faces": 128,
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        12.6685,
+        2.6809,
+        41.3252
+      ],
+      "materials": [
+        "Stomach_Exterior"
+      ],
+      "modifiers": [],
+      "name": "Breathing tube",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.3991,
+        1.3991,
+        1.7782
+      ],
+      "shape_keys": [
+        "Basis",
+        "Key 1",
+        "Key 2",
+        "Key 3",
+        "Key 4",
+        "Key 6",
+        "Key 7",
+        "Key 8",
+        "Key 9",
+        "Key 10",
+        "Key 11",
+        "Key 12",
+        "Key 13",
+        "Key 14"
+      ],
+      "type": "MESH",
+      "vertices": 160
+    },
+    {
+      "data": "BézierCircle",
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        4.1907,
+        58.8571,
+        21.3621
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "BézierCircle",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        0.7646,
+        0.7646,
+        0.7646
+      ],
+      "type": "CURVE"
+    },
+    {
+      "data": "BézierCurve.001",
+      "hide_get": true,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        21.1016,
+        -3.7105,
+        21.0971
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "BézierCurve",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        33.1329,
+        33.1329,
+        33.1329
+      ],
+      "type": "CURVE"
+    },
+    {
+      "data": "Cam_Endoscope_Data",
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        13.0819,
+        -8.7711,
+        26.4879
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Cam_Endoscope",
+      "parent": null,
+      "rotation_mode": "QUATERNION",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "type": "CAMERA"
+    },
+    {
+      "data": "Camera",
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        28.9935,
+        21.6274,
+        49.1992
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Camera",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "type": "CAMERA"
+    },
+    {
+      "data": "Camera.001",
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        7.3589,
+        -6.9258,
+        4.9583
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Camera.001",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "type": "CAMERA"
+    },
+    {
+      "data": "Cylinder",
+      "faces": 1056,
+      "hide_get": true,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        21.0819,
+        -37.2056,
+        21.5457
+      ],
+      "materials": [],
+      "modifiers": [
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF"
+        },
+        {
+          "name": "Curve",
+          "type": "CURVE"
+        }
+      ],
+      "name": "Cylinder",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.3302,
+        1.9106,
+        1.1515
+      ],
+      "shape_keys": [],
+      "type": "MESH",
+      "vertices": 1064
+    },
+    {
+      "data": null,
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        12.5598,
+        4.2847,
+        40.2914
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Empty_Aim_Cardia",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "type": "EMPTY"
+    },
+    {
+      "data": "Sphere.002",
+      "faces": 13998,
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "materials": [
+        "MAT_Esophagus_Tube"
+      ],
+      "modifiers": [
+        {
+          "name": "GN_Esophagus_Folds",
+          "type": "NODES"
+        }
+      ],
+      "name": "Esophagus Tube",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shape_keys": [
+        "Basis",
+        "Key 1",
+        "Key 2",
+        "Key 3",
+        "Key 4"
+      ],
+      "type": "MESH",
+      "vertices": 14128
+    },
+    {
+      "data": "Light",
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": true,
+      "location": [
+        -0.5017,
+        0.1529,
+        -0.0891
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Light",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "type": "LIGHT"
+    },
+    {
+      "data": "Light.001",
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": true,
+      "location": [
+        4.0762,
+        1.0055,
+        5.9039
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Light.001",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "type": "LIGHT"
+    },
+    {
+      "data": "Light_Endoscope_Tip_Data",
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        0.0,
+        0.0,
+        -0.15
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Light_Endoscope_Tip",
+      "parent": "Cam_Endoscope",
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "type": "LIGHT"
+    },
+    {
+      "data": "Light_Fill_1_Data",
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": true,
+      "location": [
+        29.3828,
+        -1.7732,
+        51.1093
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Light_Fill_1",
+      "parent": null,
+      "rotation_mode": "QUATERNION",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "type": "LIGHT"
+    },
+    {
+      "data": "Light_Fill_2_Data",
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": true,
+      "location": [
+        -2.4746,
+        -1.7732,
+        39.1093
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Light_Fill_2",
+      "parent": null,
+      "rotation_mode": "QUATERNION",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "type": "LIGHT"
+    },
+    {
+      "data": "NurbsPath",
+      "hide_get": true,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        12.7186,
+        -13.4347,
+        20.7848
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "NurbsPath",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.4418,
+        1.4418,
+        1.4418
+      ],
+      "type": "CURVE"
+    },
+    {
+      "data": "human colon 1 meshed",
+      "faces": 598650,
+      "hide_get": true,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        -0.0867,
+        32.4953,
+        -1.5656
+      ],
+      "materials": [
+        "material_0"
+      ],
+      "modifiers": [],
+      "name": "PART_11_Colon",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        -0.08,
+        -0.08,
+        -0.08
+      ],
+      "shape_keys": [],
+      "type": "MESH",
+      "vertices": 299707
+    },
+    {
+      "data": "human colon 1 meshed.001",
+      "faces": 46626,
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        19.6185,
+        5.9499,
+        34.4048
+      ],
+      "materials": [
+        "MAT_DuodenalBulb_Mucosa"
+      ],
+      "modifiers": [],
+      "name": "PART_9_Duodenal bulb",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        0.3837,
+        0.3837,
+        0.3837
+      ],
+      "shape_keys": [],
+      "type": "MESH",
+      "vertices": 23454
+    },
+    {
+      "data": "MESH_Scope_Shaft",
+      "faces": 0,
+      "hide_get": false,
+      "hide_render": true,
+      "hide_viewport": true,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "materials": [
+        "MAT_Scope_Tube"
+      ],
+      "modifiers": [
+        {
+          "name": "GN_Shaft",
+          "type": "NODES"
+        }
+      ],
+      "name": "PART_Scope_Shaft",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shape_keys": [],
+      "type": "MESH",
+      "vertices": 0
+    },
+    {
+      "data": "tripo_mesh_c4496501",
+      "faces": 36562,
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        13.6579,
+        -8.3014,
+        65.9223
+      ],
+      "materials": [
+        "tripo_mat_c4496501"
+      ],
+      "modifiers": [],
+      "name": "PART_W0_Hypopharynx",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        4.2031,
+        4.2031,
+        4.2031
+      ],
+      "shape_keys": [
+        "Basis",
+        "Key 1"
+      ],
+      "type": "MESH",
+      "vertices": 36560
+    },
+    {
+      "data": "MESH_W1_GEJ_ZLine",
+      "faces": 11680,
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        12.37,
+        1.4597,
+        39.0906
+      ],
+      "materials": [
+        "MAT_W1_GEJ_ZLine"
+      ],
+      "modifiers": [],
+      "name": "PART_W1_GEJ_ZLine",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        5.4837,
+        5.4837,
+        5.4837
+      ],
+      "shape_keys": [
+        "Basis",
+        "Open",
+        "Squeeze",
+        "Breath",
+        "Pulse",
+        "CardiaOpen"
+      ],
+      "type": "MESH",
+      "vertices": 11840
+    },
+    {
+      "data": "tripo_mesh_4b0e990d",
+      "faces": 31400,
+      "hide_get": true,
+      "hide_render": true,
+      "hide_viewport": true,
+      "location": [
+        11.7398,
+        2.262,
+        38.6135
+      ],
+      "materials": [
+        "Stomach_Exterior_Cardia"
+      ],
+      "modifiers": [],
+      "name": "PART_W2_Cardia_Retroflexed",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        6.7171,
+        6.7171,
+        6.7171
+      ],
+      "shape_keys": [
+        "Basis",
+        "Key 1"
+      ],
+      "type": "MESH",
+      "vertices": 31400
+    },
+    {
+      "data": "MESH_W3_Fundus",
+      "faces": 50755,
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        12.6414,
+        1.5567,
+        41.6358
+      ],
+      "materials": [
+        "MAT_W3_Fundus_Mucosa"
+      ],
+      "modifiers": [
+        {
+          "name": "Relax_Mucosa",
+          "type": "SMOOTH"
+        },
+        {
+          "name": "GN_Cardia_Rugae",
+          "type": "NODES"
+        }
+      ],
+      "name": "PART_W3_Fundus",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        0.9997,
+        0.9997,
+        0.9997
+      ],
+      "shape_keys": [],
+      "type": "MESH",
+      "vertices": 25623
+    },
+    {
+      "data": "Mesh",
+      "faces": 86400,
+      "hide_get": true,
+      "hide_render": true,
+      "hide_viewport": false,
+      "location": [
+        13.4238,
+        7.9419,
+        28.3879
+      ],
+      "materials": [
+        "Stomach_Exterior.001"
+      ],
+      "modifiers": [],
+      "name": "PART_W4_Rugae_Panel",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        0.8563,
+        0.8563,
+        0.8563
+      ],
+      "shape_keys": [],
+      "type": "MESH",
+      "vertices": 87001
+    },
+    {
+      "data": "MESH_W5_Antrum",
+      "faces": 19017,
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        13.9435,
+        -7.7445,
+        26.2099
+      ],
+      "materials": [
+        "MAT_Antrum_Mucosa",
+        "MAT_W6_Pylorus_Ring"
+      ],
+      "modifiers": [],
+      "name": "PART_W5_Antrum",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        2.3684,
+        2.3684,
+        2.3684
+      ],
+      "shape_keys": [
+        "Basis",
+        "Pylorus_Close",
+        "Pylorus_Open"
+      ],
+      "type": "MESH",
+      "vertices": 18633
+    },
+    {
+      "data": "Path_Endoscope_Data",
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Path_Endoscope",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "type": "CURVE"
+    },
+    {
+      "data": null,
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        12.6414,
+        1.5567,
+        41.6358
+      ],
+      "materials": [],
+      "modifiers": [],
+      "name": "Rugae_Mapping_Empty",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        0.35,
+        0.35,
+        1.8
+      ],
+      "type": "EMPTY"
+    },
+    {
+      "data": "Sphere.003",
+      "faces": 293098,
+      "hide_get": false,
+      "hide_render": false,
+      "hide_viewport": false,
+      "location": [
+        12.6414,
+        1.5567,
+        41.6358
+      ],
+      "materials": [
+        "MAT_W3_Fundus_Mucosa"
+      ],
+      "modifiers": [
+        {
+          "name": "Subsurf_Rugae",
+          "type": "SUBSURF"
+        },
+        {
+          "name": "Displace_Rugae",
+          "type": "DISPLACE"
+        },
+        {
+          "name": "Displace_Micro",
+          "type": "DISPLACE"
+        }
+      ],
+      "name": "Stomach",
+      "parent": null,
+      "rotation_mode": "XYZ",
+      "scale": [
+        0.9997,
+        0.9997,
+        0.9997
+      ],
+      "shape_keys": [
+        "Basis"
+      ],
+      "type": "MESH",
+      "vertices": 274877
+    }
+  ],
+  "render": {
+    "compositor_nodes": 0,
+    "cycles": {
+      "clamp_indirect": 10.0,
+      "denoiser": "OPENIMAGEDENOISE",
+      "device": "CPU",
+      "diffuse": 4,
+      "glossy": 4,
+      "max_bounces": 12,
+      "samples": 64,
+      "transmission": 12,
+      "use_denoising": true,
+      "volume": 0
+    },
+    "display_device": "sRGB",
+    "eevee": {
+      "gi_diffuse_bounces": 3,
+      "taa_render_samples": 40,
+      "use_fast_gi": true,
+      "use_raytracing": false,
+      "use_shadows": true,
+      "volumetric_samples": 64
+    },
+    "engine": "BLENDER_EEVEE",
+    "exposure": 0.0,
+    "file_format": "PNG",
+    "film_transparent": false,
+    "fps": 24,
+    "gamma": 1.0,
+    "look": "None",
+    "resolution": [
+      1920,
+      1080,
+      100
+    ],
+    "view_transform": "AgX"
+  },
+  "render_filepath": "S:\\works\\Blender creations\\Stomach all parts\\",
+  "render_filepath_exists": false,
+  "world": {
+    "color": [
+      0.05,
+      0.012,
+      0.008,
+      1.0
+    ],
+    "name": "World",
+    "node_types": [
+      "ShaderNodeBackground",
+      "ShaderNodeOutputWorld"
+    ],
+    "strength": 1.0
+  }
+}

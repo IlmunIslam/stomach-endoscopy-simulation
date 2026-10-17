@@ -1,8 +1,8 @@
 # PLAYBOOK: rules learned the hard way (max 40 lines; promote from docs/LESSONS.md)
 1. Never invent anatomy: any new visible feature must cite a reference image or a place Ilmun pointed at, otherwise ask.
-   Evidence: invented vein object, 2026-10-16.
+   Evidence: invented vein object, 2026-10-17 (~01:20).
 2. Never revert, open or save the working .blend; save own .npy backups before each edit and undo from them.
-   Evidence: agent used File > Revert twice.
+   Evidence: agent used File > Revert twice, 2026-10-15 (~16:56).
 3. Find out how a feature is built before editing it: base mesh, modifiers, shape keys, materials.
    Evidence: rugae are base geometry, displace strength 0, so a modifier vertex group did nothing.
 4. A gap or slit with no boundary edges can be a through-slot between ordinary faces: use cross-sections or rays and plot loops in local coordinates.

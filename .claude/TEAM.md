@@ -17,6 +17,6 @@ Subagents cannot call each other: one that needs another ends with "NEEDS: <agen
 5. Check frames 361/531/731/971 (numbers plus at most 4 downscaled images).
 6. Reviewer.
 7. Present in at most 8 lines, including what is still wrong and one suggested next order.
-8. Recorder after Ilmun's reply.
+8. Recorder before presenting (summary of what was tried, what failed, what worked), and again after Ilmun's reply only if he gave a verdict or feedback worth recording.
 
 The Stop hook (.claude/hooks/stop_check.py) nudges once per turn if 4+ Blender code calls happened without reviewer and recorder.

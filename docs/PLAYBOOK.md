@@ -21,3 +21,9 @@
     Evidence: the earlier session ran out of context mid-task.
 11. Before any reassign, merge or delete, save a mesh.copy() and each face's material_index; .npy position backups cannot restore topology or slot assignments.
     Evidence: docs/LESSONS.md 2026-10-17 antrum seam/crack entries (merge removed 346 verts; 157-face reassign left red patches).
+12. Measure before guessing a fix: ray-cast depth and face normal.view dots at the bad frames first; guessed fixes cost several rounds.
+    Evidence: docs/LESSONS.md 2026-10-18 antrum crack round 2 (measured steps fixed it); 2026-10-17 strand glint guessed as coat.
+13. If rim edges are non-manifold (3-4 faces) and rim vertices are sparse, stop patching (welds, fills, ngons); plan a local rebuild of the wall.
+    Evidence: docs/LESSONS.md 2026-10-18 antrum crack round 2 (four patch methods failed on the red dart; commit b8734f7).
+14. Camera paths: measure roll per frame (unwrapped, not slerp across ~180 deg) and check axis clearance with perpendicular rays before judging from images.
+    Evidence: docs/LESSONS.md 2026-10-18 camera path (roll ~165 deg, radial offset 0.06-0.6 vs lumen 0.028; tools/fix_camera_pyloric_path.py, commit 0d1f09b).

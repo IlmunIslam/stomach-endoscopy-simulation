@@ -23,6 +23,8 @@ ROLL_FROM, ROLL_FULL, ROLL_TO, ROLL_FADE = 486, 620, 1110, 40   # forward points
 OUT_BLEND_IN, OUT_IN, OUT_OUT, OUT_BLEND_OUT = 640, 700, 881, 910
 BACK_BLEND_IN, BACK_IN, BACK_OUT, BACK_BLEND_OUT = 1010, 1030, 1070, 1100
 H_K, H_END = 0.16, -0.3
+OUT_Q_END = 898          # orientation leaves the axis a little earlier than the position so the exit shot looks into the bulb
+SMOOTH_Q = (905, 1005)   # 5-tap binomial smoothing of the roll-locked orientation (removes 17 deg/frame snaps)
 
 
 def ss(x):
@@ -113,7 +115,7 @@ def plan():
         pos_tube = A + u * s - zp * hfun(min(s, 0.0))                       # on/below the axis, centreline once inside
         wp = ss((f - OUT_BLEND_IN) / (OUT_IN - OUT_BLEND_IN)) if f < OUT_IN else (1.0 if f <= OUT_OUT else 1 - ss((f - OUT_OUT) / (OUT_BLEND_OUT - OUT_OUT)))
         P[i] = P0[i] * (1 - wp) + pos_tube * wp
-        wq = ss((f - 700) / 22.0) if f < 722 else (1.0 if f <= OUT_OUT else 1 - ss((f - OUT_OUT) / (OUT_BLEND_OUT - OUT_OUT)))
+        wq = ss((f - 700) / 22.0) if f < 722 else (1.0 if f <= OUT_OUT else 1 - ss((f - OUT_OUT) / (OUT_Q_END - OUT_OUT)))
         qa = Quaternion(Qr[i]); qb = quat_from_fw(u)
         if qa.dot(qb) < 0: qb.negate()
         Q[i] = np.array(qa.slerp(qb, wq))
@@ -136,6 +138,10 @@ def plan():
     # quaternion sign continuity
     for i in range(ROLL_FROM, ROLL_TO + 60):
         if np.dot(Q[i], Q[i - 1]) < 0: Q[i] = -Q[i]
+    k = np.array([1, 4, 6, 4, 1], float); k /= k.sum(); Qs = Q.copy()
+    for i in range(SMOOTH_Q[0] - 1, SMOOTH_Q[1]):
+        acc = sum(k[j + 2] * Q[i + j] for j in range(-2, 3)); Qs[i] = acc / np.linalg.norm(acc)
+    Q = Qs
     return dict(fc=fc, P0=P0, Q0=Q0, P=P, Q=Q, A=A, u=u, L=L, s0=s0)
 
 

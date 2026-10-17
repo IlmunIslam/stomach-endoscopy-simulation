@@ -89,12 +89,11 @@ def rebuild_tube(apply=True):
             try: new.append(bm.faces.new([rings[k][j], rings[k][j2], rings[k + 1][j2], rings[k + 1][j]]))
             except ValueError: pass
     bm.normal_update()
-    # orient like the old faces: normals away from the axis when sgn>0
+    # orient like the old faces: reverse EVERY new face whose normal disagrees (old faces point toward the axis here)
     flip = []
     for f in new:
         cc = np.array(f.calc_center_median()); rad = cc - C_ - OFF - A_ * ((cc - C_) @ A_)
         if np.dot(np.array(f.normal), rad) * sgn < 0: flip.append(f)
-    if len(flip) > len(new) / 2: flip = [f for f in new if f not in flip]
     if flip: bmesh.ops.reverse_faces(bm, faces=flip)
     for f in new: f.material_index = 0; f.smooth = True
     bm.to_mesh(me); bm.free(); me.update()

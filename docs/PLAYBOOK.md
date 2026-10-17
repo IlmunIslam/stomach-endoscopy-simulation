@@ -27,3 +27,5 @@
     Evidence: docs/LESSONS.md 2026-10-18 antrum crack round 2 (four patch methods failed on the red dart; commit b8734f7).
 14. Camera paths: measure roll per frame (unwrapped, not slerp across ~180 deg) and check axis clearance with perpendicular rays before judging from images.
     Evidence: docs/LESSONS.md 2026-10-18 camera path (roll ~165 deg, radial offset 0.06-0.6 vs lumen 0.028; tools/fix_camera_pyloric_path.py, commit 0d1f09b).
+15. After generating faces, compare each new face normal with the old faces' side (sign of normal dot radial) and flip every mismatch as a full set, then check the streaks.
+    Evidence: docs/LESSONS.md 2026-10-19 pyloric canal rebuild (minority flip gave wedge streaks; tools/rebuild_pyloric_canal.py, commit 9f51469).

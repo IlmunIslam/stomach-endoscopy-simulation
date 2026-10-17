@@ -3,8 +3,8 @@
    Evidence: invented vein object, 2026-10-17 (~01:20).
 2. Never revert, open or save the working .blend; save own .npy backups before each edit and undo from them.
    Evidence: agent used File > Revert twice, 2026-10-15 (~16:56).
-3. Find out how a feature is built before editing it: base mesh, modifiers, shape keys, materials.
-   Evidence: rugae are base geometry, displace strength 0, so a modifier vertex group did nothing.
+3. Find out how a feature is built before editing it: base mesh, modifiers (GN time gates vs camera distance), shape keys, materials.
+   Evidence: rugae are base geometry, displace strength 0, so a modifier vertex group did nothing; GATE_OUT faded while the camera was 2-5 units away (docs/LESSONS.md 2026-10-18 shards+shaft).
 4. A gap or slit with no boundary edges can be a through-slot between ordinary faces: use cross-sections or rays and plot loops in local coordinates.
    Evidence: pylorus slot found only after many loop overlays.
 5. Apply geometry edits to every shape key (Basis, Pylorus_Close, Pylorus_Open) or the animation breaks.
@@ -29,3 +29,5 @@
     Evidence: docs/LESSONS.md 2026-10-18 camera path (roll ~165 deg, radial offset 0.06-0.6 vs lumen 0.028; tools/fix_camera_pyloric_path.py, commit 0d1f09b).
 15. After generating faces, compare each new face normal with the old faces' side (sign of normal dot radial) and flip every mismatch as a full set, then check the streaks.
     Evidence: docs/LESSONS.md 2026-10-19 pyloric canal rebuild (minority flip gave wedge streaks; tools/rebuild_pyloric_canal.py, commit 9f51469).
+16. Before deleting a suspect patch, isolate it (ray-cast the pixel grid to face ids, then check connected components); in a double-layered column each deletion only exposes the next layer.
+    Evidence: docs/LESSONS.md 2026-10-18 shards+shaft (16-face strip was the shard; 175- and 6-face deletions made it worse; commit a20a5e9).

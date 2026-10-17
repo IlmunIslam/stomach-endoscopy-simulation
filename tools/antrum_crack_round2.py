@@ -8,3 +8,8 @@ Method: measure, don't guess. Ray-cast the camera at frames 820/850 across the c
     bmesh.ops.weld_verts (removed the red dart).
 Backups (npz of all keys) in %TEMP%\antrum_fix. Frames 361/531/731/971 and 700-900 means identical before/after (nothing else moved).
 """
+# Open after round 2 (not fixed): a vertical chain of small through-holes in the funnel wall below the pyloric aperture
+# (about local x 0..0.08, z 0.60-0.61 at frame 850, pixels ~(489-501, 313-337) of 960x540). Rays pass through to the Stomach (red).
+# The wall there is a very low-poly double-layer slab: rim vertices are sparse and the rim edges are shared by 3-4 faces, so
+# boundary-edge detection, weld pairs, holes_fill and a hand-made ngon patch (looked like a flat sticker, reverted) did not work.
+# Needs a local rebuild of that wall patch (e.g. remesh/re-bridge the two lips), not smoothing.

@@ -31,3 +31,7 @@
     Evidence: docs/LESSONS.md 2026-10-19 pyloric canal rebuild (minority flip gave wedge streaks; tools/rebuild_pyloric_canal.py, commit 9f51469).
 16. Before deleting a suspect patch, isolate it (ray-cast the pixel grid to face ids, then check connected components); in a double-layered column each deletion only exposes the next layer.
     Evidence: docs/LESSONS.md 2026-10-18 shards+shaft (16-face strip was the shard; 175- and 6-face deletions made it worse; commit a20a5e9).
+17. When the target is vague ("the gap"), render the user's own viewport first (bpy.ops.render.opengl(view_context=True) under temp_override, restoring render.filepath and resolution) and ask for a selected-vertex pointer after one failed fix, not a chain of metrics.
+    Evidence: docs/LESSONS.md 2026-10-19 antrum gap (four fixes, mean-gap metric improved, no visible change).
+18. Merges and smoothing: dry-run the removed-vert count first, weld only coincident pairs, then smooth; never smooth before welding.
+    Evidence: docs/LESSONS.md 2026-10-20 antrum pylorus notch (0.025 merge removed 422 verts) and 2026-10-17 seam/crack (1.2e-3 removed 346).

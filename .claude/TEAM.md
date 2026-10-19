@@ -3,6 +3,7 @@ Ilmun gives plain prompts. The Lead (the main session) works with him directly a
 
 ## Roster
 - researcher (subagent, web, no Blender): use when anatomy, references or technique knowledge is missing. Ask ONE question; it returns a short sourced answer.
+- scout (subagent, web, no Blender): use weekly or when Ilmun asks what could be added; it proposes, never installs.
 - reviewer (subagent, read-only, fresh eyes): use BEFORE presenting any visual or geometry work. Give it the order, success criteria, before/after paths, numbers and reference paths. It returns PASS or FIX FIRST and a ranked defect list; fix real defects.
 - recorder (subagent): use AFTER each task and after any failed attempt. Give it a short summary.
 - learner (on demand via /learn): researches docs/knowledge/QUEUE.md topics and writes technique cards. Not used during a Blender task.

@@ -11,5 +11,9 @@
 | EndoPBR | n/a | 2026-10-19 | watch | Neural stylization research, code status unclear. |
 | kevinbadi/blender-skills | n/a | 2026-10-19 | reject | Product turntables, not our bottleneck. |
 | hkuds/cli-anything | n/a | 2026-10-19 | reject | Headless CLI, not our bottleneck. |
+| PreToolUse hook guarding execute_blender_code | https://code.claude.com/docs/en/hooks | 2026-10-19 | adopt | Mechanically blocks save/revert/open sent through Blender MCP; ~20 min; see 2026-10-19.md. |
+| Blender 5.2 LTS Cycles texture cache | https://developer.blender.org/docs/release_notes/5.2/cycles/ | 2026-10-19 | try (copy only) | May lower RAM on 8 GB; no 8 GB benchmark found; GN API changes may break tools/. |
+| Ardity (Unity serial) | https://github.com/DWilches/Ardity | 2026-10-19 | watch | CC BY 2.0, maintenance unknown; for the Unity phase. |
+| Mesh Heal / MeshRepair / Manifold Evolved / QuadLab | https://mesh-heal.readthedocs.io/en/latest/mesh_heal.html | 2026-10-19 | reject | Do not target sparse double-layer non-manifold walls (PLAYBOOK 13). |
 
 Seeded from the Director's first sweep of 2026-10-19.

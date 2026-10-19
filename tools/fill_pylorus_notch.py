@@ -93,7 +93,7 @@ def run(R, backup='ANTRUM_BACKUP_r10'):
                 except ValueError: pass
         bm.normal_update(); want = 1 if front else -1
         bad = [f for f in faces if (np.array(f.normal) @ A) * want < 0]
-        if len(bad) > len(faces) / 2: bad = [f for f in faces if f not in bad]
+        # reverse EVERY face whose normal disagrees with its sheet (never the complement; see PLAYBOOK 15)
         if bad: bmesh.ops.reverse_faces(bm, faces=bad)
         for f in faces: f.material_index = 0; f.smooth = True
         nfaces += len(faces)

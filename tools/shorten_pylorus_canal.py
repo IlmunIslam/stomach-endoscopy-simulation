@@ -14,6 +14,11 @@ Order used (2026-10-22), each step with a mesh/npz backup first:
  7. Bulb neck (rad < 0.35, 0.10 < ax < 0.42, not on the hole edge) Laplacian-smoothed 25 x 0.5 to undo folds from the hole shift (max move 0.087);
     MAT_DuodenalBulb_Mucosa Coat Roughness 0.05 -> 0.28: the remaining 'white leaves' near the mouth were saturated mirror glints of the
     headlight on the coat (hit faces were front-facing bulb faces), they now read as soft wet sheen.
+ 8. After the 0.355 shift the bulb's end-cap flange (rad 0.5-1.2, ax up to 0.64) pierced the Antrum/Stomach skin and showed as heart-shaped
+    patches from the stomach side (user selection, 367 verts, saved in antrum_fix/r4/user_sel_bulb.npy). Fixed in edit mode on the bulb:
+    per vertex skin height H = max ax of a -A ray onto Antrum and Stomach; verts with ax > H-0.03 (selected ones H-0.10) moved down along -A,
+    smoothed over 20 hops (close_pylorus_slot._smooth); then viewport-ray loop (first hit bulb, later hit Antrum/Stomach) pushed any still-visible
+    faces down 0.07 and re-smoothed (4 rounds, last round found none). Backups: antrum_fix/r4/bulb_V_s9.npy and bulb_V_s10.npy (bulb-local coords).
  5. Light_Endoscope_Tip energy is baked per frame: for frames 744-884 and 1030-1060 set E = 41 * d^2 (d = median forward ray distance over a
     +-18 deg cone, capped 1.2, 5-tap smoothed in log space, 8-frame blends), x(0.4..1) when closer than 0.5, capped 8 around the exit.
 """

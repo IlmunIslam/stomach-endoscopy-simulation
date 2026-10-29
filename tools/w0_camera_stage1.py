@@ -10,24 +10,24 @@ import bpy, os, numpy as np
 from mathutils import Vector, Matrix, Quaternion
 
 ROOT = r"E:\works\Blender creations\Stomach all parts\backups_w0"
-F_JOIN = 212
+F_JOIN = 224
 OLD_JOIN = 121
 F_END = 341
 
 WP = [  # frame, (x, y, z), pitch deg, yaw deg, roll deg, hold
-    (1,   (13.45, 9.8, 71.6), 6, 0, 0, True),
-    (16,  (13.45, 9.6, 71.6), 6, 0, 0, True),
-    (40,  (13.50, 5.5, 71.5), 9, -2, 0, False),
-    (62,  (13.45, 0.5, 71.9), 4, 2, 0, False),
-    (78,  (13.45, -2.3, 71.8), 8, 0, 0, False),
-    (96,  (13.45, -4.4, 71.2), 38, 0, 0, False),
-    (112, (13.45, -5.7, 70.2), 78, 0, 0, False),
-    (124, (13.50, -6.5, 69.3), 90, 0, 0, True),
-    (156, (13.50, -6.7, 68.7), 90, 0, 0, True),
-    (172, (13.45, -7.5, 67.6), 90, 0, 0, False),
-    (186, (13.40, -7.9, 66.6), 90, 0, 0, False),
-    (194, (13.40, -7.9, 66.2), 90, 0, 0, True),
-    (203, (13.45, -7.9, 65.0), 90, 0, 0, False),
+    (1,   (13.45, 10.4, 72.0), 6, 0, 0, True),
+    (28,  (13.45, 10.2, 72.0), 6, 0, 0, True),
+    (50,  (13.50, 6.0, 72.0), 8, -2, 0, False),
+    (70,  (13.40, 1.5, 72.0), 5, 2, 0, False),
+    (88,  (13.45, -2.0, 72.0), 6, 0, 0, False),
+    (104, (13.45, -4.2, 71.6), 40, 0, 0, False),
+    (116, (13.45, -5.6, 70.4), 80, 0, 0, False),
+    (128, (13.50, -6.5, 69.4), 90, 0, 0, True),
+    (172, (13.50, -6.75, 68.5), 88, 0, 0, True),
+    (186, (13.15, -7.3, 67.6), 90, 0, 0, False),
+    (198, (13.55, -7.74, 66.7), 90, 0, 0, False),
+    (206, (13.55, -7.74, 66.2), 90, 0, 0, True),
+    (214, (13.52, -7.78, 64.9), 90, 0, 0, False),
 ]
 
 
@@ -92,6 +92,9 @@ def run(write=True):
             ('rotation_quaternion', 2), ('rotation_quaternion', 3)]
     n_old = len(cur[keys[0]].keyframe_points)
     old = np.array([[cur[k].keyframe_points[i].co[1] for k in keys] for i in range(n_old)])
+    npy = os.path.join(ROOT, 'cam_old_keys.npy')
+    if os.path.exists(npy):
+        old = np.load(npy)  # keys already rewritten once: always warp from the saved originals
     bk = os.path.join(ROOT, 'w0_stage1_backup.blend')
     if write and not os.path.exists(bk):
         np.save(os.path.join(ROOT, 'cam_old_keys.npy'), old)
@@ -104,8 +107,18 @@ def run(write=True):
 
     frames = np.arange(1, F_END + 1)
     new = np.zeros((len(frames), 7))
-    wf = frames[frames <= 203]
+    LAST = WP[-1][0]
+    wf = frames[frames <= LAST]
     tr = waypoint_track(wf)
+    sway = np.zeros_like(tr)
+    for k, f in enumerate(wf):
+        a = 1.0 if 28 < f < 120 else (0.45 if f >= 120 else 0.25)
+        sway[k, 0] = a * 0.10 * (0.6 * np.sin(2 * np.pi * f / 37.0) + 0.4 * np.sin(2 * np.pi * f / 23.0 + 1.0))
+        sway[k, 2] = a * 0.05 * np.sin(2 * np.pi * f / 29.0 + 0.5)
+        sway[k, 3] = a * 1.4 * np.sin(2 * np.pi * f / 31.0 + 2.0)
+        sway[k, 4] = a * 1.6 * np.sin(2 * np.pi * f / 41.0)
+    sway[wf >= LAST - 6] *= 0.0
+    tr = tr + sway
     for k, f in enumerate(wf):
         new[k, :3] = tr[k, :3]
         q = pose_quat(*tr[k, 3:6])
@@ -118,10 +131,10 @@ def run(write=True):
         v[3:] /= np.linalg.norm(v[3:])
         return v
     for k, f in enumerate(frames):
-        if f <= 203:
+        if f <= LAST:
             continue
         if f < F_JOIN:
-            w = (f - 203) / (F_JOIN - 203); w = w * w * (3 - 2 * w)
+            w = (f - LAST) / (F_JOIN - LAST); w = w * w * (3 - 2 * w)
             a = np.r_[tr[len(wf) - 1][:3], [pose_quat(*tr[len(wf) - 1][3:6]).w, *list(pose_quat(*tr[len(wf) - 1][3:6]))[1:]]]
             b = old_at(OLD_JOIN)
             v = a * (1 - w) + b * w; v[3:] /= np.linalg.norm(v[3:])

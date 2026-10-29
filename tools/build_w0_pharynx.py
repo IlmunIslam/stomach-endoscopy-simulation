@@ -14,7 +14,7 @@ CX = 13.45
 NRING = 72
 
 # centerline (y, z); x is CX everywhere
-PTS = np.array([(11.5, 72.0), (8.0, 72.0), (4.0, 72.0), (0.0, 72.0), (-3.0, 71.8), (-5.3, 70.6),
+PTS = np.array([(11.5, 72.0), (8.0, 72.0), (4.0, 72.0), (0.0, 72.0), (-3.0, 71.9), (-5.3, 70.6),
                 (-6.5, 68.6), (-6.75, 66.5), (-6.75, 65.0)])
 
 
@@ -55,9 +55,9 @@ def build():
     T /= np.linalg.norm(T, axis=1)[:, None]
     rings_s = np.linspace(0, L, 150)
     # (s, ax, b_tongue_side, b_other_side)
-    table = [(0, 1.45, 1.25, 1.25), (2.6, 1.5, 1.3, 1.3), (4.2, 2.3, 2.0, 2.1), (11, 2.35, 2.0, 2.1),
+    table = [(0, 1.45, 1.25, 1.25), (1.8, 1.5, 1.3, 1.3), (4.2, 2.3, 2.0, 2.1), (11, 2.35, 2.0, 2.1),
              (L - 9.0, 2.4, 2.0, 2.05), (L - 4.5, 2.55, 2.05, 2.05), (L, 2.55, 2.05, 2.05)]
-    verts, tongue_w, uv = [], [], []
+    verts, tongue_w, uv, slab_w = [], [], [], []
     phis = np.linspace(0, 2 * np.pi, NRING, endpoint=False)
     for s in rings_s:
         cy = np.interp(s, S, C[:, 0]); cz = np.interp(s, S, C[:, 1])
@@ -65,27 +65,28 @@ def build():
         t3 = np.array([0.0, ty, tz]); t3 /= np.linalg.norm(t3)
         N = np.array([1.0, 0, 0]); B = np.cross(N, t3)
         ax, bp, bn = interp(table, s)
-        tongue_h = 1.35 * smooth((s - 3.0) / 3.0) * (1 - 0.85 * smooth((s - (L - 11.0)) / 6.0))
-        palate_h = 0.8 * smooth((s - 11.0) / 3.0) * (1 - smooth((s - (L - 8.0)) / 3.0))
+        tongue_h = 1.05 * smooth((s - 1.8) / 2.6) * (1 - 0.85 * smooth((s - (L - 11.0)) / 6.0))
+        palate_h = 1.1 * smooth((s - 9.0) / 3.0) * (1 - smooth((s - (L - 8.0)) / 3.0))
         for phi in phis:
             c, sn = np.cos(phi), np.sin(phi)
             if sn > 0:
                 b = bp - tongue_h * (1 - abs(c) ** 2.0) ** 1.2 * sn ** 0.5
                 b = b if b > 0.35 else 0.35
-                w = smooth((sn - 0.1) / 0.4) * smooth((s - 2.6) / 1.2) * (1 - smooth((s - (L - 12.0)) / 4.0))
+                w = smooth((sn + 0.1) / 0.9) * smooth((s - 1.8) / 1.2) * (1 - smooth((s - (L - 12.0)) / 4.0))
             else:
-                b = bn - palate_h * (1 - abs(c) ** 2.0) ** 1.0 * (-sn) ** 0.5
+                b = bn - palate_h * (1 - abs(c) ** 2.0) ** 1.0 * (-sn) ** 0.5 - 0.45 * smooth((s - (L - 15.0)) / 2.5) * (1 - smooth((s - (L - 9.0)) / 2.5)) * np.exp(-((abs(c) - 0.72) / 0.13) ** 2) * (-sn)
                 w = 0.0
             rad = np.array([ax * c, 0, 0]) + B * (b * sn)
             p = np.array([CX, cy, cz]) + rad
             # slight organic wobble
-            p += 0.015 * np.array([np.sin(3 * phi + s), np.sin(2 * phi + 0.7 * s), np.sin(5 * phi - s)])
-            verts.append(p); tongue_w.append(w)
+            p += 0.025 * np.array([np.sin(3 * phi + s), np.sin(2 * phi + 0.7 * s), np.sin(5 * phi - s)])
+            verts.append(p); tongue_w.append(w); slab_w.append(float(smooth((s - (L - 9.0)) / 6.0)))
             uv.append((phi / (2 * np.pi), s / L))
     verts = np.array(verts)
     me = bpy.data.meshes.new("MESH_W0_Oropharynx")
     bm = bmesh.new()
     wl = bm.verts.layers.float.new("tongue_w")
+    sl = bm.verts.layers.float.new("slab_w")
     uvl = bm.loops.layers.uv.new("UVMap")
     bv = [bm.verts.new(v) for v in verts]
     nr = len(rings_s)
@@ -98,7 +99,7 @@ def build():
     # material index: 2 = bite block (s<2.6), else 0
     for k, f in enumerate(faces):
         i = k // NRING
-        f.material_index = 2 if rings_s[i] < 2.6 else 0
+        f.material_index = 2 if rings_s[i] < 1.8 else 0
     # floor: bridge the end ring (z=65.0) to a hole circle at the esophagus
     end_loop = [e for e in bm.edges if all(abs(v.co.z - 65.0) < 1e-4 for v in e.verts) and len(e.link_faces) == 1]
     hole = []
@@ -112,14 +113,20 @@ def build():
     # uvula
     uvr = bmesh.ops.create_uvsphere(bm, u_segments=16, v_segments=10, radius=0.5)
     uverts = uvr["verts"]
-    ceil_z = 72.0 + 2.1 - 0.8 * 0.95
-    bmesh.ops.scale(bm, vec=(0.3, 0.3, 1.0), verts=uverts)
-    bmesh.ops.translate(bm, vec=(CX, -3.4, ceil_z - 0.55), verts=uverts)
+    near = [v for v in verts if abs(v[1] + 3.4) < 0.3 and abs(v[0] - CX) < 0.3 and v[2] > 72.0]
+    ceil_z = max(v[2] for v in near)
+    bmesh.ops.scale(bm, vec=(0.36, 0.36, 0.62), verts=uverts)
+    bmesh.ops.translate(bm, vec=(CX, -3.4, ceil_z - 0.27), verts=uverts)
     bm.normal_update()
     # tongue weight attribute and uv layer
+    for v in hole:
+        v[sl] = 1.0
+    for v in uverts:
+        for f in v.link_faces:
+            f.material_index = 1
     index_of = {v: i for i, v in enumerate(bv)}
     for i, v in enumerate(bv):
-        v[wl] = tongue_w[i]
+        v[wl] = tongue_w[i]; v[sl] = slab_w[i]
     for f in bm.faces:
         for lp in f.loops:
             v = lp.vert
@@ -149,23 +156,35 @@ def materials():
     out = nt.nodes.new("ShaderNodeOutputMaterial"); bs = nt.nodes.new("ShaderNodeBsdfPrincipled")
     attr = nt.nodes.new("ShaderNodeAttribute"); attr.attribute_name = "tongue_w"; attr.attribute_type = 'GEOMETRY'
     mix = nt.nodes.new("ShaderNodeMix"); mix.data_type = 'RGBA'
-    mix.inputs[6].default_value = (0.62, 0.20, 0.17, 1)      # mucosa (A)
-    mix.inputs[7].default_value = (0.80, 0.52, 0.47, 1)      # tongue (B)
+    mix.inputs[6].default_value = (0.70, 0.24, 0.19, 1)      # mucosa (A)
+    mix.inputs[7].default_value = (0.72, 0.40, 0.35, 1)      # tongue (B)
     nz = nt.nodes.new("ShaderNodeTexNoise"); nz.inputs["Scale"].default_value = 45; nz.inputs["Detail"].default_value = 6
-    vor = nt.nodes.new("ShaderNodeTexVoronoi"); vor.inputs["Scale"].default_value = 90
-    bump = nt.nodes.new("ShaderNodeBump"); bump.inputs["Strength"].default_value = 0.0
-    mulb = nt.nodes.new("ShaderNodeMath"); mulb.operation = 'MULTIPLY'; mulb.inputs[1].default_value = 0.6
+    vor = nt.nodes.new("ShaderNodeTexVoronoi"); vor.feature = 'SMOOTH_F1'; vor.inputs["Smoothness"].default_value = 1.0; vor.inputs["Scale"].default_value = 120
+    bump = nt.nodes.new("ShaderNodeBump"); bump.inputs["Strength"].default_value = 0.0; bump.inputs["Distance"].default_value = 0.012
+    mulb = nt.nodes.new("ShaderNodeMath"); mulb.operation = 'MULTIPLY_ADD'; mulb.inputs[1].default_value = 0.3; mulb.inputs[2].default_value = 0.16
     nt.links.new(attr.outputs["Fac"], mix.inputs[0])
     nt.links.new(vor.outputs["Distance"], bump.inputs["Height"])
+    nt.links.new(nz.outputs["Fac"], vor.inputs["Vector"]) if False else None
     nt.links.new(attr.outputs["Fac"], mulb.inputs[0])
     nt.links.new(mulb.outputs[0], bump.inputs["Strength"])
-    nt.links.new(mix.outputs[2], bs.inputs["Base Color"])
+    attr2 = nt.nodes.new("ShaderNodeAttribute"); attr2.attribute_name = "slab_w"; attr2.attribute_type = 'GEOMETRY'
+    mix2 = nt.nodes.new("ShaderNodeMix"); mix2.data_type = 'RGBA'
+    mix2.inputs[7].default_value = (0.78, 0.27, 0.21, 1)   # tone of the laryngeal texture next to the wall
+    mulc = nt.nodes.new("ShaderNodeMath"); mulc.operation = 'MULTIPLY'; mulc.inputs[1].default_value = 0.85
+    nt.links.new(attr2.outputs["Fac"], mulc.inputs[0]); nt.links.new(mulc.outputs[0], mix2.inputs[0])
+    nt.links.new(mix.outputs[2], mix2.inputs[6])
+    nt.links.new(mix2.outputs[2], bs.inputs["Base Color"])
     nt.links.new(bump.outputs["Normal"], bs.inputs["Normal"])
     bs.inputs["Roughness"].default_value = 0.35
     bs.inputs["Subsurface Weight"].default_value = 0.15
     bs.inputs["Coat Weight"].default_value = 0.5; bs.inputs["Coat Roughness"].default_value = 0.08
     nt.links.new(bs.outputs[0], out.inputs[0])
     mats[0] = m
+    u = bpy.data.materials.new("MAT_W0_Uvula"); u.use_nodes = True
+    ub = u.node_tree.nodes["Principled BSDF"]
+    ub.inputs["Base Color"].default_value = (0.66, 0.26, 0.22, 1); ub.inputs["Roughness"].default_value = 0.55
+    ub.inputs["Coat Weight"].default_value = 0.15; ub.inputs["Subsurface Weight"].default_value = 0.1
+    mats[1] = u
     p = bpy.data.materials.new("MAT_W0_BiteBlock"); p.use_nodes = True
     pb = p.node_tree.nodes["Principled BSDF"]
     pb.inputs["Base Color"].default_value = (0.22, 0.12, 0.42, 1); pb.inputs["Roughness"].default_value = 0.25
@@ -176,9 +195,13 @@ def materials():
 def run():
     if NAME in bpy.data.objects:
         return {"error": NAME + " already exists"}
+    for mn in ("MAT_W0_Oral", "MAT_W0_BiteBlock", "MAT_W0_Uvula"):
+        if mn in bpy.data.materials and bpy.data.materials[mn].users == 0:
+            bpy.data.materials.remove(bpy.data.materials[mn])
     me, info = build()
     ms = materials()
-    me.materials.append(ms[0]); me.materials.append(ms[0]); me.materials.append(ms[2])
+    me.materials.append(ms[0]); me.materials.append(ms[1]); me.materials.append(ms[2])
+    me.shade_smooth()
     ob = bpy.data.objects.new(NAME, me)
     bpy.data.collections["Collection"].objects.link(ob)
     return info

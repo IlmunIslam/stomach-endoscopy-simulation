@@ -1,0 +1,1 @@
+- Antrum seam/crack task: merging 121 coincident verts, reassigning slot-wall face materials and lowering vein coat did NOT change the render (white seam line and Y-crack persist, cause not found); don't repeat those three, inspect the actual faces under the line (flipped normals/overlap) instead.

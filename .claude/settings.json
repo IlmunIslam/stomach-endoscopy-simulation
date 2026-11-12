@@ -11,6 +11,16 @@
         ]
       }
     ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/prompt_reminder.py\""
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [

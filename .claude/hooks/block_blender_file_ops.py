@@ -25,8 +25,8 @@ def main():
     if not hit and any(k in blob for k in SAVES) and not re.search(r"copy\s*=\s*True", blob):
         hit = [k for k in SAVES if k in blob]
     if hit:
-        return ("Blocked: agents must not revert, open or save the working .blend (it can discard Ilmun's unsaved work). "
-                "Found %s. Use your own .npy coordinate backups to undo, or ask Ilmun." % ", ".join(hit))
+        return ("Blocked: agents must not revert, open or save the working .blend (it can discard the user's unsaved work). "
+                "Found %s. Use your own .npy coordinate backups to undo, or ask the user." % ", ".join(hit))
     return None
 
 
